@@ -1,8 +1,6 @@
 """DNS Authenticator for Oracle Cloud Infrastructure DNS."""
 import logging
 
-import zope.interface
-
 from oci import config
 from oci.dns import DnsClient
 from oci.dns.models import RecordDetails, UpdateRRSetDetails
@@ -17,8 +15,6 @@ from certbot.plugins import dns_common
 logger = logging.getLogger(__name__)
 
 
-@zope.interface.implementer(interfaces.IAuthenticator)
-@zope.interface.provider(interfaces.IPluginFactory)
 class Authenticator(dns_common.DNSAuthenticator):
     """DNS Authenticator for Oracle Cloud Infrastructure (OCI)
     This Authenticator uses the OCI API to fulfill a dns-01 challenge.
